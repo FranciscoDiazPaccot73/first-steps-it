@@ -1,0 +1,22 @@
+@media (min-width: 830px) {
+  .fs {
+    &__header {
+      background-color: #189396;
+      border-radius: 8px;
+      height: 150px;
+      margin: 60px 32px 48px;
+      padding: 24px;
+  
+      &-container {
+        position: relative;
+      }
+  
+      &-icon {
+        position: absolute;
+        right: 50%;
+        top: 70px;
+        transform: translateX(50%);
+      }
+    }
+  }
+}
