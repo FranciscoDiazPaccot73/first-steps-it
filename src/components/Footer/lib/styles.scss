@@ -1,0 +1,35 @@
+@import '../../../styles/variables';
+
+.fs__footer {
+  align-items: center;
+  background-color: $main-color;
+  color: $black-800;
+  display: flex;
+  font-size: 12px;
+  height: 30px;
+  padding: 24px;
+  position: relative;
+  
+  &-copyright {
+    align-items: center;
+    display: flex;
+
+    span {
+      margin-left: 2px;
+    }
+  }
+
+  &-dev {
+    bottom: 10px;
+    font-size: 8px;
+    position: absolute;
+    right: 24px;
+
+    a {
+      color: $black-550;
+      cursor: pointer;
+      font-weight: 600;
+      text-decoration: none;
+    }
+  }
+}

@@ -1,0 +1,68 @@
+@import '../../../styles/variables';
+
+@media (min-width: 830px) {
+  .fs {  
+    &__jobs {
+      margin: 130px 32px 0 !important;
+  
+      &-card {
+        height: 90px !important;
+        margin: 32px 0 !important;
+        padding: 24px !important;
+  
+        &:hover {
+          box-shadow: $card-shadow-elevated;
+        }
+  
+        &-logo {
+          height: 55px !important;
+          margin: 8px 50px !important;
+          width: 55px !important;
+        }
+
+        &-information {
+          border-right: 1px solid $black-250;
+          padding-right: 24px;
+        }
+  
+        &-info {
+          font-size: 20px !important;
+        }
+        
+        &-corporate {
+          font-size: 24px !important;
+          margin: 0 24px 12px !important;
+        }
+
+        &-location {
+          color: $black-550;
+          font-size: 14px;
+          font-weight: 600;
+          margin-left: 20px;
+
+          div {
+            color: $black-800;
+            font-size: 14px;
+            margin-top: 2px;
+          }
+        }
+
+        &-cta {
+          background-color: $main-color;
+          border-radius: 6px;
+          color: $black-800;
+          cursor: pointer;
+          font-size: 14px;
+          font-weight: 600;
+          margin: 0 45px 0 auto;
+          padding: 8px 12px;
+          text-decoration: none;
+
+          &:hover {
+            filter: brightness(110%) saturate(110%);
+          }
+        }
+      }
+    }
+  }
+}

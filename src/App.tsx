@@ -1,8 +1,9 @@
 import { useEffect, useContext } from 'react';
 
 import { PageContext } from './context/index';
-import { setProducts } from './context/actions';
+import { setIsMobile, setJobsdata } from './context/actions';
 
+import Api from './Api';
 import Routes from './Routes';
 
 import './styles.scss';
@@ -11,21 +12,20 @@ const App = () => {
   const { dispatch, state: { isMobile } } = useContext(PageContext);
 
   useEffect(() => {
-    /*
      (async function anyNameFunction() {
-      await loadContent();
+      const jobs = await Api.list();
+      setJobsdata(dispatch, jobs);
     })();
-    */
    window.scrollTo(0,0);
    window.addEventListener("resize", () => {
     const screenSize = document.documentElement.clientWidth;
-    if (screenSize <= 970) {
-      !isMobile && setProducts(dispatch, true);
+    if (screenSize <= 830) {
+      !isMobile && setIsMobile(dispatch, true);
     } else {
-      isMobile && setProducts(dispatch, false);
+      isMobile && setIsMobile(dispatch, false);
     }
    });
-   setProducts(dispatch, document.documentElement.clientWidth <= 970);
+   setIsMobile(dispatch, document.documentElement.clientWidth <= 830);
   }, []);
 
   return (

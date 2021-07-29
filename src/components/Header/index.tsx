@@ -1,30 +1,46 @@
 import { useContext, useState, useEffect } from "react";
 
 import MobileHeader from "./Mobile";
-import DesktopHeader from "./Desktop";
 
 import { PageContext } from '../../context/index';
+import { showJobs } from '../../context/actions';
 
 import './lib/styles.scss';
 
 const Header = () => {
-  const { state: { isMobile, shouldAnimateHome } } = useContext(PageContext);
+  const { dispatch, state: { isMobile, shouldAnimateHome } } = useContext(PageContext);
   const [animate, setAnimateState] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
     if (shouldAnimateHome) {
       setTimeout(() => {
         setAnimateState(true);
-      }, 300);
+      }, 500);
+      setTimeout(() => {
+        showJobs(dispatch, true);
+      }, 2000);
     }
-  }, [])
+  }, []);
+
+  const onScrollAction = () => {
+    if (window.pageYOffset > 12) {
+      !isSticky && setIsSticky(true);
+    } else {
+      setIsSticky(false);
+    }
+  }
+  
+  window.onscroll = () => onScrollAction();
 
   const headerProps = {
     shouldAnimateHome,
     animate,
+    isSticky,
+    isMobile,
   };
 
-  return <>{isMobile ? <MobileHeader {...headerProps} /> : <DesktopHeader {...headerProps} />}</>
+  return <MobileHeader {...headerProps}/>
 };
 
 export default Header;

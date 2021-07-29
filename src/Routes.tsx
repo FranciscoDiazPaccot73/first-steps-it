@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom';
 import Jobs from './components/Jobs';
 import Header from './components/Header';
+import Footer from './components/Footer';
 
 const Routes = () =>
   <Router>
@@ -16,6 +17,7 @@ const Routes = () =>
     />*/}
     <Route component={Jobs} />
     </Switch>
+    <Footer />
   </Router>
 
 export default Routes;

@@ -1,8 +1,27 @@
 @import './desktop';
+@import '../../../styles/variables';
 
 .fs {
+  &__sticky {
+    background-color: $main-color;
+    height: 70px;
+    opacity: 0;
+    position: fixed;
+    top: -70px;
+    transition: all .1s ease-in-out;
+    width: 100%;
+    z-index: 1000;
+
+    &-visible {
+      opacity: 1;
+      box-shadow: $card-shadow;
+      top: 0;
+      transition: top .2s ease-in-out;
+    }
+  }
+
   &__header {
-    background-color: #189396;
+    background-color: $main-color;
     height: 350px;
     padding: 24px;
     position: relative;
@@ -39,7 +58,6 @@
     &-text {
       margin-right: 4px;
       max-width: 150px;
-      color: red;
       font-size: 22px;
       letter-spacing: 2px;
 

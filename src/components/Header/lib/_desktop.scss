@@ -1,21 +1,63 @@
+@import '../../../styles/variables';
+
 @media (min-width: 830px) {
   .fs {
+    &__sticky {
+      &-visible {
+        .fs__header-title--final {
+          left: 0;
+          margin-left: 54px;
+          transition: none !important;
+        }
+
+        .fs__header-cta--visible {
+          margin-right: 54px;
+          right: 0;
+          transition: none !important;
+        }
+      }
+    }
+
     &__header {
-      background-color: #189396;
       border-radius: 8px;
       height: 150px;
       margin: 60px 32px 48px;
-      padding: 24px;
-  
-      &-container {
-        position: relative;
-      }
   
       &-icon {
-        position: absolute;
         right: 50%;
-        top: 70px;
         transform: translateX(50%);
+      }
+  
+      &-text {
+        font-size: 32px !important;
+  
+        &-it {
+          font-size: 32px !important;
+  
+          &--size {
+            font-size: 18px !important;
+          }
+        }
+      }
+  
+      &-logo {
+        height: 55px !important;
+        width: 55px !important;
+  
+        &--small {
+          height: 28px !important;
+          width: 28px !important;
+        }
+      }
+  
+      &-welcome {
+        top: 42% !important;
+        width: 475px !important;
+      }
+  
+      &-cta {
+        font-size: 18px;
+        margin: 6px 4px;
       }
     }
   }
