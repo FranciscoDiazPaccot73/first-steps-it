@@ -6,7 +6,7 @@ import Programing from "../../Assets/programing";
 
 import logo from '../../Assets/logo.png';
 
-const MobileHeader = ({ className = "fs__header", animate = false }: HeaderTypes) => {
+const MobileHeader = ({ className = "fs__header", animate = false, isSticky, isMobile }: HeaderTypes) => {
   const [startTransition, setTransition] = useState(false);
   const [startSplitText, setSplit] = useState(false);
 
@@ -32,6 +32,9 @@ const MobileHeader = ({ className = "fs__header", animate = false }: HeaderTypes
   const headerCTAclasses = classNames(`${className}-cta`, {
     [`${className}-cta--visible`]: startTransition,
   });
+  const stickyHeader = classNames("fs__sticky", {
+    "fs__sticky-visible": isSticky,
+  });
 
   useEffect(() => {
     if (animate) {
@@ -42,10 +45,10 @@ const MobileHeader = ({ className = "fs__header", animate = false }: HeaderTypes
         setSplit(true);
       }, 400);
     }
-  }, [animate])
-  
-  return (
-    <div className={className}>
+  }, [animate]);
+
+  const renderHeaderTop = () => (
+    <>
       <div className={titleClasses}>
         <img className={logoClasses} src={logo}/>
         <div className={textClasses}>Primeros</div>
@@ -53,11 +56,28 @@ const MobileHeader = ({ className = "fs__header", animate = false }: HeaderTypes
         <div className={itClasses}>IT</div>
       </div>
       <div className={headerCTAclasses}>Trabajos</div>
-      <div className={welcomeClasses}>Encontra un lugar para realizar tus primeros pasos en el increible mundo IT!</div>
-      <div className={iconClasses}>
-        <Programing height="180" width="300"/>
+    </>
+  );
+  
+  return (
+    <>
+      {startTransition ? (
+        <div className={stickyHeader}>
+          <div className={titleClasses}>
+            <img className={logoClasses} src={logo}/>
+            <div className={itClasses}>IT</div>
+          </div>
+          <div className={headerCTAclasses}>Trabajos</div>
+        </div>
+      ) : null}
+      <div className={className}>
+        {renderHeaderTop()}
+        <div className={welcomeClasses}>¡Encontrá un lugar para realizar tus primeros pasos en el mundo IT!</div>
+        <div className={iconClasses}>
+          <Programing height={isMobile ? "180" : "220"} width={isMobile ? "300" : "600"}/>
+        </div>
       </div>
-    </div>
+    </>
   )
 };
 
