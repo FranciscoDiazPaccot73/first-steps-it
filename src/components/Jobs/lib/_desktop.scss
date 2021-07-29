@@ -4,6 +4,10 @@
   .fs {  
     &__jobs {
       margin: 130px 32px 0 !important;
+
+      &-footer {
+        margin: 50px 0 40px !important;
+      }
   
       &-card {
         height: 90px !important;

@@ -9,6 +9,7 @@ export const init = (config: any) => {
     ...config,
     shouldAnimateHome: true,
     showJobs: false,
+    jobs: [],
   };
 };
 

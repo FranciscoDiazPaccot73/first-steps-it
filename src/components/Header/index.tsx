@@ -24,7 +24,8 @@ const Header = () => {
   }, []);
 
   const onScrollAction = () => {
-    if (window.pageYOffset > 12) {
+    const initSticky = isMobile ? 12 : 70;
+    if (window.pageYOffset > initSticky) {
       !isSticky && setIsSticky(true);
     } else {
       setIsSticky(false);

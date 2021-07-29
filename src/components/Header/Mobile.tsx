@@ -35,6 +35,9 @@ const MobileHeader = ({ className = "fs__header", animate = false, isSticky, isM
   const stickyHeader = classNames("fs__sticky", {
     "fs__sticky-visible": isSticky,
   });
+  const backgroundClasses = classNames("fs__background", {
+    "fs__background--hidden": startTransition,
+  });
 
   useEffect(() => {
     if (animate) {
@@ -47,15 +50,19 @@ const MobileHeader = ({ className = "fs__header", animate = false, isSticky, isM
     }
   }, [animate]);
 
+  const anchorProps = {
+    href: "mailto:test@gmail.com",
+  };
+
   const renderHeaderTop = () => (
     <>
       <div className={titleClasses}>
         <img className={logoClasses} src={logo}/>
-        <div className={textClasses}>Primeros</div>
-        <div className={textClasses}>Pasos</div>
+        <div className={textClasses}>PRIMEROS</div>
+        <div className={textClasses}>PASOS</div>
         <div className={itClasses}>IT</div>
       </div>
-      <div className={headerCTAclasses}>Trabajos</div>
+      <a className={headerCTAclasses} {...anchorProps}>Contacto</a>
     </>
   );
   
@@ -67,7 +74,7 @@ const MobileHeader = ({ className = "fs__header", animate = false, isSticky, isM
             <img className={logoClasses} src={logo}/>
             <div className={itClasses}>IT</div>
           </div>
-          <div className={headerCTAclasses}>Trabajos</div>
+          <a className={headerCTAclasses} {...anchorProps}>Contacto</a>
         </div>
       ) : null}
       <div className={className}>
@@ -77,6 +84,7 @@ const MobileHeader = ({ className = "fs__header", animate = false, isSticky, isM
           <Programing height={isMobile ? "180" : "220"} width={isMobile ? "300" : "600"}/>
         </div>
       </div>
+      {isMobile ? <div className={backgroundClasses} /> : null}
     </>
   )
 };

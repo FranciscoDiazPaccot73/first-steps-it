@@ -16,9 +16,12 @@ const Card = ({ job, className = "fs__jobs-card", isMobile }: CardType) => {
   return (
     <Wrapper className={className} {...wrapperProps}>
       <div className={`${className}-background`}>
+        {isMobile ? <span>{location}</span> : null}
         <div className={`${className}-logo`}/>
         <div className={`${className}-information`}>
-          <div className={`${className}-corporate`}>{getCorporateName(corporate)}</div>
+          <div className={`${className}-corporate`}>
+            {getCorporateName(corporate)}
+          </div>
           <div className={`${className}-info`}>{title}</div>
         </div>
         {!isMobile ? (
