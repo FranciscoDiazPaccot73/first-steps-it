@@ -1,0 +1,27 @@
+@import '../../../styles/variables';
+
+.fs__under-construction {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+
+  &-text {
+    color: $black-800;
+    font-weight: 600;
+    margin: 32px;
+    text-align: center;
+  }
+
+  &-contact {
+    color: $black-550;
+    font-size: 14px;
+    margin: 0 32px;
+
+    a {
+      color: $black-550;
+      text-decoration: none;
+    }
+  }
+}
