@@ -51,16 +51,16 @@ const MobileHeader = ({ className = "fs__header", animate = false, isSticky, isM
   }, [animate]);
 
   const anchorProps = {
-    href: "mailto:test@gmail.com",
+    href: "mailto:info@hiringjr.com",
   };
 
   const renderHeaderTop = () => (
     <>
       <div className={titleClasses}>
         <img className={logoClasses} src={logo}/>
-        <div className={textClasses}>PRIMEROS</div>
-        <div className={textClasses}>PASOS</div>
-        <div className={itClasses}>IT</div>
+        <div className={textClasses}>WE'RE</div>
+        <div className={textClasses}>HIRING</div>
+        <div className={itClasses}>Jr.</div>
       </div>
       <a className={headerCTAclasses} {...anchorProps}>Contacto</a>
     </>
@@ -72,7 +72,7 @@ const MobileHeader = ({ className = "fs__header", animate = false, isSticky, isM
         <div className={stickyHeader}>
           <div className={titleClasses}>
             <img className={logoClasses} src={logo}/>
-            <div className={itClasses}>IT</div>
+            <div className={itClasses}>Jr.</div>
           </div>
           <a className={headerCTAclasses} {...anchorProps}>Contacto</a>
         </div>

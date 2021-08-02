@@ -26,24 +26,28 @@
     &-card {
       align-items: center;
       background-color: $main-color;
-      border-radius: 6px;
-      box-shadow: $card-shadow;
       display: flex;
-      height: 60px;
-      margin: 24px 12px;
+      height: 170px;
+      margin: 10px 0;
       padding: 16px;
       position: relative;
       overflow: hidden;
       text-decoration: none;
 
       &-background {
-        align-items: center;
         background-color: $white;
         display: flex;
+        flex-direction: column;
         height: 100%;
         left: 4px;
         position: absolute;
         width: 100%;
+        
+        &-head {
+          align-items: center;
+          display: flex;
+          margin-top: 36px;
+        }
 
         span {
           color: $black-250;
@@ -81,8 +85,26 @@
       }
 
       &-chevron {
-        margin-left: auto;
-        margin-right: 14px;
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      &-requirements {
+        margin: 16px 24px;
+        text-decoration: none;
+
+        &-title {
+          color: $black-550;
+          font-weight: 600;
+          margin-bottom: 8px;
+        }
+
+        &-content {
+          color: $black-800;
+          margin-left: 8px;
+        }
       }
     }
   }

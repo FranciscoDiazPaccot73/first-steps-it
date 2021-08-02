@@ -10,12 +10,24 @@
       }
   
       &-card {
-        height: 90px !important;
+        border-radius: 6px;
+        box-shadow: $card-shadow;
+        height: 300px !important;
         margin: 32px 0 !important;
         padding: 24px !important;
   
         &:hover {
           box-shadow: $card-shadow-elevated;
+        }
+
+        &-job {
+          margin: 32px 26px;
+        }
+
+        &-requirements {
+          &-title {
+            margin: 18px 0 !important;
+          }
         }
   
         &-logo {
