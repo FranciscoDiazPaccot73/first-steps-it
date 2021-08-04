@@ -12,7 +12,7 @@
       &-card {
         border-radius: 6px;
         box-shadow: $card-shadow;
-        height: 300px !important;
+        height: 320px !important;
         margin: 32px 0 !important;
         padding: 24px !important;
   
@@ -21,7 +21,7 @@
         }
 
         &-job {
-          margin: 32px 26px;
+          margin: 24px 26px 32px;
         }
 
         &-requirements {
@@ -31,9 +31,9 @@
         }
   
         &-logo {
-          height: 55px !important;
-          margin: 8px 50px !important;
-          width: 55px !important;
+          height: 75px !important;
+          margin: 8px 35px 8px 50px !important;
+          width: 75px !important;
         }
 
         &-information {
@@ -64,9 +64,9 @@
         }
 
         &-cta {
-          background-color: $main-color;
+          border: 1px solid $main-color;
           border-radius: 6px;
-          color: $black-800;
+          color: $main-color;
           cursor: pointer;
           font-size: 14px;
           font-weight: 600;
@@ -75,6 +75,8 @@
           text-decoration: none;
 
           &:hover {
+            background-color: $main-color;
+            color: $secoandary-color;
             filter: brightness(110%) saturate(110%);
           }
         }

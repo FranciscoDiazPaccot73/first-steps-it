@@ -1,7 +1,7 @@
 import { CardType } from "./types";
 import { FiChevronRight } from 'react-icons/fi';
 
-import { getCorporateName } from '../../utils/jobs';
+import { getCorporateName, getCorporateLogo } from '../../utils/jobs';
 
 const Card = ({ job, className = "fs__jobs-card", isMobile }: CardType) => {
   const { link, title, corporate, location, shortDescription, description } = job;
@@ -29,7 +29,7 @@ const Card = ({ job, className = "fs__jobs-card", isMobile }: CardType) => {
       <div className={`${className}-background`}>
           {isMobile ? <span>{location}</span> : null}
           <div className={`${className}-background-head`}>
-            <div className={`${className}-logo`}/>
+            <div className={`${className}-logo`}>{getCorporateLogo(corporate)}</div>
             <div className={`${className}-information`}>
               <div className={`${className}-corporate`}>
                 {getCorporateName(corporate)}
@@ -38,7 +38,7 @@ const Card = ({ job, className = "fs__jobs-card", isMobile }: CardType) => {
             </div>
           {!isMobile ? (
             <>
-              <div className={`${className}-location`}>Ubicacion: <div>{location}</div></div>
+              <div className={`${className}-location`}>Ubicación: <div>{location}</div></div>
               <a className={`${className}-cta`} {...anchorProps}>POSTULATE</a>
             </>
           ) : null}
@@ -46,7 +46,7 @@ const Card = ({ job, className = "fs__jobs-card", isMobile }: CardType) => {
         {isMobile && shortDescription ? (
           <>
             <div className={`${className}-chevron`}>
-              <FiChevronRight color="#189396" />
+              <FiChevronRight color="#281830" />
             </div>
             {renderInfo(REQUIREMENTS, shortDescription)}
           </>

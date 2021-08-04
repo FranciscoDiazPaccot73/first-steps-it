@@ -70,12 +70,14 @@
     }
 
     &-text {
+      color: $secoandary-color;
       margin-right: 4px;
       max-width: 150px;
       font-size: 22px;
       letter-spacing: 2px;
 
       &-it {
+        color: $secoandary-color;
         font-size: 22px;
 
         &--size {
@@ -103,9 +105,9 @@
     }
 
     &-logo {
-      height: 40px;
+      height: 50px;
       margin-right: 4px;
-      width: 40px;
+      width: 50px;
 
       &--small {
         height: 26px;
@@ -115,15 +117,16 @@
     }
 
     &-welcome {
+      color: $secoandary-color;
+      font-size: 20px;
+      font-weight: 600;
       left: 50%;
+      opacity: 0;
       position: absolute;
+      text-align: center;
       top: 50%;
       transform: translate3d(-50%, -90%, 0);
       width: 75%;
-      text-align: center;
-      font-weight: 600;
-      font-size: 20px;
-      opacity: 0;
 
       &-visible {
         opacity: 1;
@@ -133,8 +136,8 @@
 
     &-cta {
       border-radius: 6px;
-      border: 1px solid $black-800;
-      color: $black-800;
+      border: 1px solid $secoandary-color;
+      color: $secoandary-color;
       font-size: 12px;
       opacity: 0;
       padding: 8px 12px;

@@ -6,6 +6,8 @@ import Programing from "../../Assets/programing";
 
 import logo from '../../Assets/logo.png';
 
+import { CONSTANTS } from '../../utils/constants';
+
 const MobileHeader = ({ className = "fs__header", animate = false, isSticky, isMobile }: HeaderTypes) => {
   const [startTransition, setTransition] = useState(false);
   const [startSplitText, setSplit] = useState(false);
@@ -20,9 +22,9 @@ const MobileHeader = ({ className = "fs__header", animate = false, isSticky, isM
   const iconClasses = classNames(`${className}-icon`, {
     [`${className}-icon--visible`]: startTransition,
   });
-  const itClasses = classNames(`${className}-text-it`, {
+  /* const itClasses = classNames(`${className}-text-it`, {
     [`${className}-text-it--size`]: startTransition,
-  });
+  }); */
   const logoClasses = classNames(`${className}-logo`, {
     [`${className}-logo--small`]: startTransition,
   });
@@ -51,16 +53,16 @@ const MobileHeader = ({ className = "fs__header", animate = false, isSticky, isM
   }, [animate]);
 
   const anchorProps = {
-    href: "mailto:info@hiringjr.com",
+    href: `mailto:${CONSTANTS.EMAIL}`,
   };
 
   const renderHeaderTop = () => (
     <>
       <div className={titleClasses}>
         <img className={logoClasses} src={logo}/>
-        <div className={textClasses}>WE'RE</div>
-        <div className={textClasses}>HIRING</div>
-        <div className={itClasses}>Jr.</div>
+        {!startTransition ? <div className={textClasses}>WE'RE</div> : null}
+        {!startTransition ? <div className={textClasses}>HIRING</div> : null}
+        {!startTransition ? <div className={textClasses}>Jr.</div> : null}
       </div>
       <a className={headerCTAclasses} {...anchorProps}>Contacto</a>
     </>
@@ -70,16 +72,15 @@ const MobileHeader = ({ className = "fs__header", animate = false, isSticky, isM
     <>
       {startTransition ? (
         <div className={stickyHeader}>
-          <div className={titleClasses}>
+          <div className={titleClasses} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
             <img className={logoClasses} src={logo}/>
-            <div className={itClasses}>Jr.</div>
           </div>
           <a className={headerCTAclasses} {...anchorProps}>Contacto</a>
         </div>
       ) : null}
       <div className={className}>
         {renderHeaderTop()}
-        <div className={welcomeClasses}>¡Encontrá un lugar para realizar tus primeros pasos en el mundo IT!</div>
+        <div className={welcomeClasses}>¡Abrite camino en el mundo IT!</div>
         <div className={iconClasses}>
           <Programing height={isMobile ? "180" : "220"} width={isMobile ? "300" : "600"}/>
         </div>

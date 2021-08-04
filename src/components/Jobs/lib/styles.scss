@@ -1,5 +1,6 @@
 @import '../../../styles/variables';
 @import './desktop';
+@import './animations';
 
 .fs {
   &__tabs {
@@ -16,11 +17,70 @@
   &__jobs {
     margin-top: 70px;
 
+    &-loader {
+      display: flex;
+      justify-content: center;
+
+      &-logo {
+        animation: beat 1.5s infinite;
+        height: 50vw;
+        max-height: 400px;
+        max-width: 400px;
+        position: relative;
+        width: 50vw;
+      }
+    }
+
+    &-no-content {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 24px;
+
+      &-info {
+        color: $black-800;
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 12px;
+      }
+
+      &-contact {
+        color: $black-550;
+        font-size: 12px;
+        margin-bottom: 20px;
+
+        a {
+          color: $orange;
+          font-weight: 600;
+          text-decoration: none;
+        }
+      }
+
+      &-cta {
+        border-radius: 6px;
+        color: $orange;
+        margin-top: 24px;
+        padding: 8px 12px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $orange;
+          color: $white;
+        }
+      }
+    }
+
     &-footer {
       color: $black-800;
       font-size: 14px;
       margin: 50px 16px 32px;
       text-align: center;
+      
+      a {
+        color: $main-color;
+        text-decoration: none;
+      }
     }
 
     &-card {
@@ -50,7 +110,7 @@
         }
 
         span {
-          color: $black-250;
+          color: $black-550;
           font-size: 12px;
           position: absolute;
           right: 16px;
@@ -63,11 +123,15 @@
       }
 
       &-logo {
+        align-items: center;
+        display: flex;
         height: 40px;
         margin: 8px 8px 8px 16px;
         width: 40px;
-        background-color: red;
-        border-radius: 50%;
+
+        img {
+          width: 100%;
+        }
       }
 
       &-info {
