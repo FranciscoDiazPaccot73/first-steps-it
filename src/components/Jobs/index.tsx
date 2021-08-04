@@ -4,6 +4,9 @@ import Card from './Card';
 import NoContent from "../../Assets/noContent";
 
 import { PageContext } from '../../context/index';
+import { setJobsdata } from '../../context/actions';
+
+import Api from '../../Api';
 
 import { CONSTANTS } from '../../utils/constants';
 import logo from '../../Assets/logo-loader.png';
@@ -11,7 +14,7 @@ import logo from '../../Assets/logo-loader.png';
 import './lib/styles.scss';
 
 const Jobs = () => {
-  const { state: { showJobs, jobs, isMobile } } = useContext(PageContext);
+  const { dispatch, state: { showJobs, jobs, isMobile } } = useContext(PageContext);
   const [noContent, setNoContet] = useState(false);
 
   useEffect(() => {
@@ -22,14 +25,21 @@ const Jobs = () => {
     }, 5000);
 
     return (() => clearTimeout(myTimeout))
-  }, []);
+  }, [jobs]);
+
+  const handleRetry = async () => {
+    setNoContet(false);
+    setJobsdata(dispatch, []);
+    const jobs = await Api.list();
+    setJobsdata(dispatch, jobs);
+  };
 
   const renderNoContent = () => (
     <div className="fs__jobs-no-content">
       <div className="fs__jobs-no-content-info">Oops, algo salió mal.</div>
       <div className="fs__jobs-no-content-contact">Si el problema persiste, <a href={`mailto:${CONSTANTS.EMAIL}`}>avisanos</a>.</div>
       <NoContent height={isMobile ? "180" : "220"} width={isMobile ? "300" : "600"}/>
-      <div className="fs__jobs-no-content-cta" onClick={() => window.location.reload()}>Volver a intentar.</div>
+      <div className="fs__jobs-no-content-cta" onClick={handleRetry}>Volver a intentar.</div>
     </div>
   );
 
