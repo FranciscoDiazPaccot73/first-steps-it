@@ -3,11 +3,11 @@
 .fs__footer {
   align-items: center;
   background-color: $main-color;
-  color: $black-800;
+  color: $secoandary-color;
   display: flex;
   font-size: 12px;
   height: 30px;
-  padding: 24px;
+  padding: 20px;
   position: relative;
   
   &-copyright {
@@ -26,7 +26,7 @@
     right: 24px;
 
     a {
-      color: $black-550;
+      color: $orange;
       cursor: pointer;
       font-weight: 600;
       text-decoration: none;
