@@ -1,4 +1,5 @@
 import { useEffect, useContext } from 'react';
+import { ChakraProvider } from "@chakra-ui/react"
 
 import { PageContext } from './context/index';
 import { setIsMobile, setJobsdata } from './context/actions';
@@ -29,7 +30,9 @@ const App = () => {
   }, []);
 
   return (
-    <Routes/>
+    <ChakraProvider>
+      <Routes/>
+    </ChakraProvider>
   )
 };
 

@@ -1,6 +1,7 @@
 import serfe from '../Assets/serfe-logo.png';
 import meli from '../Assets/meli-logo.png';
 import def from '../Assets/default-image.png';
+import syloper from '../Assets/sysloper.png';
 
 export const getCorporateName = name => {
   let label;
@@ -11,6 +12,9 @@ export const getCorporateName = name => {
       break;
     case 'serfe':
       label = "Serfe";
+      break;
+    case 'syloper':
+      label = "Syloper";
       break;
     default:
       break;
@@ -25,6 +29,8 @@ export const getCorporateLogo = (id) => {
       return <img src={meli} alt="Mercado Libre" />;
     case 'serfe':
       return <img src={serfe} alt="Serfe" />;
+    case 'syloper':
+      return <img src={syloper} alt="Serfe" />;
     default:
       return <img src={def} alt="Default" />;
   }

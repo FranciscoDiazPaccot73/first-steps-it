@@ -6,8 +6,8 @@
   color: $secoandary-color;
   display: flex;
   font-size: 12px;
-  height: 30px;
-  padding: 20px;
+  height: 60px;
+  padding: 16px 20px 24px;
   position: relative;
   
   &-copyright {
@@ -20,10 +20,10 @@
   }
 
   &-dev {
-    bottom: 10px;
+    bottom: 6px;
     font-size: 8px;
     position: absolute;
-    right: 24px;
+    right: 16px;
 
     a {
       color: $orange;
