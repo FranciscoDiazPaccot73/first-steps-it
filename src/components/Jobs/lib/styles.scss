@@ -229,13 +229,34 @@
     background-color: $orange;
     border: 1px solid $orange;
     border-radius: 6px;
-    padding: 6px;
-    text-align: center;
+    height: 38px;
     width: 100%;
 
+    &-pdf {
+      color: $orange;
+      margin-top: 8px;
+      padding: 6px;
+      width: 100%;
+
+      a {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+
+        span {
+          margin-left: 6px;
+        }
+      }
+    }
+
     .fs__jobs-card-cta {
+      align-items: center;
       color: $main-color;
+      display: flex;
       font-weight: 600;
+      height: 38px;
+      justify-content: center;
+      width: 100%;
     }
   }
 }

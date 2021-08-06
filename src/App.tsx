@@ -20,13 +20,13 @@ const App = () => {
    window.scrollTo(0,0);
    window.addEventListener("resize", () => {
     const screenSize = document.documentElement.clientWidth;
-    if (screenSize <= 830) {
+    if (screenSize <= 880) {
       !isMobile && setIsMobile(dispatch, true);
     } else {
       isMobile && setIsMobile(dispatch, false);
     }
    });
-   setIsMobile(dispatch, document.documentElement.clientWidth <= 830);
+   setIsMobile(dispatch, document.documentElement.clientWidth <= 880);
   }, []);
 
   return (

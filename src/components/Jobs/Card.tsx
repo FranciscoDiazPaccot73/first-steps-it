@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { CardType } from "./types";
 import { FiChevronRight } from 'react-icons/fi';
+import { ImFilePdf } from 'react-icons/im';
 import {
   Drawer,
   DrawerBody,
@@ -11,11 +12,11 @@ import {
   DrawerCloseButton,
 } from "@chakra-ui/react"
 
-import { getCorporateName, getCorporateLogo } from '../../utils/jobs';
+import { getCorporateName, getCorporateLogo, getPdf } from '../../utils/jobs';
 
 const Card = ({ job, className = "fs__jobs-card", isMobile }: CardType) => {
   const [ isOpen, setIsOpen ] = useState(false);
-  const { link, title, corporate, location, requirement, allRequirement, benefits, description } = job;
+  const { link, title, corporate, location, requirement, allRequirement, benefits, description, pathId } = job;
   const Wrapper = isMobile ? 'a' : 'div';
   const anchorProps = {
     href: link,
@@ -59,6 +60,34 @@ const Card = ({ job, className = "fs__jobs-card", isMobile }: CardType) => {
     setIsOpen(true);
   };
 
+  const renderPrimaryCta = () => (
+    <div className="sidebar__action" onClick={handleClose}>
+      <a className={`${className}-cta`} {...anchorProps}>APLICAR</a>
+    </div>
+  );
+
+  const renderMobileCta = () => (
+    <div style={{ width: "100%" }}>
+      {renderPrimaryCta()}
+      {getPdf(pathId) ? (
+        <div className="sidebar__action-pdf">
+          <a {...anchorProps} href={getPdf(pathId)}><ImFilePdf /><span>Ver propuesta</span></a>
+        </div>
+      ) : null}
+    </div>
+  )
+
+  const renderDesktopCta = () => (
+    <>
+      {getPdf(pathId) ? (
+        <div className="sidebar__action-pdf">
+          <a {...anchorProps} href={getPdf(pathId)}><ImFilePdf /><span>Ver propuesta</span></a>
+        </div>
+      ) : null}
+      {renderPrimaryCta()}
+    </>
+  )
+
   const renderModal = () => (
     <Drawer
       isOpen={isOpen}
@@ -78,11 +107,8 @@ const Card = ({ job, className = "fs__jobs-card", isMobile }: CardType) => {
             {benefits ? renderInfo(BENEFITS, benefits) : null}
           </div>
         </DrawerBody>
-
         <DrawerFooter>
-        <div className="sidebar__action" onClick={handleClose}>
-            <a className={`${className}-cta`} {...anchorProps}>APLICAR</a>
-          </div>
+          {isMobile ? renderMobileCta() : renderDesktopCta()}        
         </DrawerFooter>
       </DrawerContent>
     </Drawer>
@@ -90,7 +116,7 @@ const Card = ({ job, className = "fs__jobs-card", isMobile }: CardType) => {
 
   return (
     <div style={{ position: "relative" }}>
-    <div className={`${className}-background-see-more`} style={{zIndex: 100}} onClick={handleSeeMore}>Conocer más</div>
+    {isMobile ? <div className={`${className}-background-see-more`} style={{zIndex: 100}} onClick={handleSeeMore}>Conocer más</div> : null}
     <Wrapper className={className} {...wrapperProps}>
       <div className={`${className}-background`}>
           {isMobile ? <span>{location}</span> : null}
@@ -105,7 +131,10 @@ const Card = ({ job, className = "fs__jobs-card", isMobile }: CardType) => {
           {!isMobile ? (
             <>
               <div className={`${className}-location`}>Ubicación: <div>{location}</div></div>
-              <a className={`${className}-cta`} {...anchorProps}>APLICAR</a>
+              <div className={`${className}-cta`}>
+                <div className={`${className}-cta-see-more`} onClick={handleSeeMore}>Conocer más</div>
+                <a className={`${className}-cta-apply`} {...anchorProps}>APLICAR</a>
+              </div>
             </>
           ) : null}
         </div>

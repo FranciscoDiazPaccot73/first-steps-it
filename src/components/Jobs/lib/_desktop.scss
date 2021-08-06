@@ -1,6 +1,6 @@
 @import '../../../styles/variables';
 
-@media (min-width: 830px) {
+@media (min-width: 880px) {
   .fs {  
     &__jobs {
       margin: 130px 32px 0 !important;
@@ -22,19 +22,10 @@
           &-head {
             margin-top: 24px !important;
           }
-
-          &-see-more {
-            bottom: 12px !important;
-
-            &:hover {
-              background-color: $orange-10;
-              border-radius: 6px;
-            }
-          }
         }
 
         &-job {
-          margin: 8px 26px 24px;
+          margin: 8px 26px;
         }
 
         &-requirements {
@@ -45,7 +36,7 @@
   
         &-logo {
           height: 75px !important;
-          margin: 8px 35px 8px 50px !important;
+          margin: 8px 20px 8px 45px !important;
           width: 75px !important;
         }
 
@@ -68,6 +59,7 @@
           font-size: 14px;
           font-weight: 600;
           margin-left: 20px;
+          max-width: 158px;
 
           div {
             color: $black-800;
@@ -77,20 +69,36 @@
         }
 
         &-cta {
-          border: 1px solid $main-color;
-          border-radius: 6px;
-          color: $main-color;
+          align-items: center;
           cursor: pointer;
+          display: flex;
           font-size: 14px;
-          font-weight: 600;
           margin: 0 45px 0 auto;
-          padding: 8px 12px;
           text-decoration: none;
+          
+          &-see-more {
+            color: $orange;
+            font-size: 14px;
+            margin-right: 8px;
+            padding: 8px 12px;
+            
+            &:hover {
+              background-color: $orange-10;
+              border-radius: 6px;
+            }
+          }
+          
+          &-apply {
+            border: 1px solid $main-color;
+            border-radius: 6px;
+            color: $main-color;
+            font-weight: 600;
+            padding: 8px 12px;
 
-          &:hover {
-            background-color: $main-color;
-            color: $secoandary-color;
-            filter: brightness(110%) saturate(110%);
+            &:hover {
+              background-color: $main-color;
+              color: $secoandary-color;
+            }
           }
         }
       }
@@ -102,6 +110,9 @@
   .sidebar {
     &__action {
       cursor: pointer;
+      height: 35px !important;
+      padding: 0 !important;
+      text-align: center;
       width: 130px !important;
 
       &:hover {
@@ -110,12 +121,26 @@
 
       .fs__jobs-card-cta {
         border: none;
+        display: flex;
+        height: 35px !important;
+        justify-content: center;
         margin: 0;
         width: 130px !important;
 
         &:hover {
           background-color: transparent;
           color: $main-color;
+        }
+      }
+
+      &-pdf {
+        cursor: pointer;
+        margin: 0 8px !important;
+        width: 160px !important;
+
+        &:hover {
+          background-color: $orange-10;
+          border-radius: 6px;
         }
       }
     }
