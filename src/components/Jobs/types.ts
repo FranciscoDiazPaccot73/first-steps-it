@@ -5,5 +5,5 @@ export type CardType = {
 };
 
 export type TabType = {
-  label: string,
+  type: string,
 };
