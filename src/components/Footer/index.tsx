@@ -7,6 +7,11 @@ import './lib/styles.scss';
 
 const Footer = () => {
   const { state: { showJobs } } = useContext(PageContext);
+  const anchorProps = {
+    href: 'https://franciscodiazpaccot.com',
+    target: '_blank',
+    rel: 'noreferrer noopener',
+  };
 
   return (
     <>
@@ -16,7 +21,7 @@ const Footer = () => {
             <AiOutlineCopyright /><span>Copyright {new Date().getFullYear()}. Todos los derechos reservados.</span>
           </div>
           <div className="fs__footer-dev">
-            Powered by <a>Francisco Diaz Paccot</a>
+            Powered by <a {...anchorProps}>Francisco Diaz Paccot</a>
           </div>
         </div>
       ) : null}

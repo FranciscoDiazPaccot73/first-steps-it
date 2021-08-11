@@ -12,6 +12,8 @@ import {
   DrawerCloseButton,
 } from "@chakra-ui/react"
 
+import Tab from './Tabs';
+
 import { getCorporateName, getCorporateLogo, getPdf } from '../../utils/jobs';
 
 const Card = ({ job, className = "fs__jobs-card", isMobile }: CardType) => {
@@ -116,10 +118,10 @@ const Card = ({ job, className = "fs__jobs-card", isMobile }: CardType) => {
 
   return (
     <div style={{ position: "relative" }}>
-    {isMobile ? <div className={`${className}-background-see-more`} style={{zIndex: 100}} onClick={handleSeeMore}>Conocer más</div> : null}
-    <Wrapper className={className} {...wrapperProps}>
-      <div className={`${className}-background`}>
-          {isMobile ? <span>{location}</span> : null}
+      {isMobile ? <div className={`${className}-background-see-more`} style={{zIndex: 100}} onClick={handleSeeMore}>Conocer más</div> : null}
+      <Wrapper className={className} {...wrapperProps}>
+        <div className={`${className}-background`}>
+          {isMobile ? <span><Tab type="orange" />{location}</span> : null}
           <div className={`${className}-background-head`}>
             <div className={`${className}-logo`}>{getCorporateLogo(corporate)}</div>
             <div className={`${className}-information`}>
@@ -128,32 +130,32 @@ const Card = ({ job, className = "fs__jobs-card", isMobile }: CardType) => {
               </div>
               <div className={`${className}-info`}>{title}</div>
             </div>
-          {!isMobile ? (
-            <>
-              <div className={`${className}-location`}>Ubicación: <div>{location}</div></div>
-              <div className={`${className}-cta`}>
-                <div className={`${className}-cta-see-more`} onClick={handleSeeMore}>Conocer más</div>
-                <a className={`${className}-cta-apply`} {...anchorProps}>APLICAR</a>
-              </div>
-            </>
-          ) : null}
-        </div>
-        {isMobile && requirement ? (
-          <>
-            <div className={`${className}-chevron`}>
-              <FiChevronRight color="#281830" />
-            </div>
-            {renderInfo(REQUIREMENTS, requirement)}
-          </>
-        ) : (
-          <div className={`${className}-job`}>
-            {renderInfo(DESCRIPTION, description)}
-            {renderInfo(REQUIREMENTS, requirement)}
+            {!isMobile ? (
+              <>
+                <div className={`${className}-location`}>Ubicación: <div>{location}</div></div>
+                <div className={`${className}-cta`}>
+                  <div className={`${className}-cta-see-more`} onClick={handleSeeMore}>Conocer más</div>
+                  <a className={`${className}-cta-apply`} {...anchorProps}>APLICAR</a>
+                </div>
+              </>
+            ) : null}
           </div>
-        )}
-      </div>
-      {renderModal()}
-    </Wrapper>
+          {isMobile && requirement ? (
+            <>
+              <div className={`${className}-chevron`}>
+                <FiChevronRight color="#281830" />
+              </div>
+              {renderInfo(REQUIREMENTS, requirement)}
+            </>
+          ) : (
+            <div className={`${className}-job`}>
+              {renderInfo(DESCRIPTION, description)}
+              {renderInfo(REQUIREMENTS, requirement)}
+            </div>
+          )}
+        </div>
+        {renderModal()}
+      </Wrapper>
     </div>
   );
 }

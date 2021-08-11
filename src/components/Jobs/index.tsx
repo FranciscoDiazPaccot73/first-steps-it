@@ -61,7 +61,7 @@ const Jobs = () => {
         {/*<div className="fs__tabs">
           <Tab label="Trabajos" />
         </div>*/}
-        {jobs?.map((job: any) => <Card key={job.id} job={job} isMobile={isMobile} />)}
+        {jobs?.map((job: any) => job.id && <Card key={job.id} job={job} isMobile={isMobile} />)}
         {!jobs.length ? renderFetching() : null}
         <div className="fs__jobs-footer">
           Si tu empresa busca desarrolladores Junior/Trainee, si sabes de alguna otra busqueda abierta de este estilo, si estas buscando algun puesto y queres dejar tu perfil para que
