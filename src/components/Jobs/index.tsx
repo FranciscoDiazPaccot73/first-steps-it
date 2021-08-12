@@ -8,7 +8,8 @@ import { setJobsdata } from '../../context/actions';
 
 import Api from '../../Api';
 
-import { CONSTANTS } from '../../utils/constants';
+import { CONSTANTS, CONFIG } from '../../utils/constants';
+import { trackView, trackEvent } from '../../utils/tracks';
 import logo from '../../Assets/logo-loader.png';
 
 import './lib/styles.scss';
@@ -16,6 +17,7 @@ import './lib/styles.scss';
 const Jobs = () => {
   const { dispatch, state: { showJobs, jobs, isMobile } } = useContext(PageContext);
   const [noContent, setNoContet] = useState(false);
+  const { CATEGORY_JOBS } = CONFIG;
 
   useEffect(() => {
     const myTimeout = setTimeout(() => {
@@ -27,17 +29,26 @@ const Jobs = () => {
     return (() => clearTimeout(myTimeout))
   }, [jobs]);
 
+  useEffect(() => {
+    trackView("/jobs");
+  }, []);
+
   const handleRetry = async () => {
+    trackEvent(CATEGORY_JOBS, "RETRY", isMobile ? "MOBILE" : "DESKTOP");
     setNoContet(false);
     setJobsdata(dispatch, []);
     const jobs = await Api.list();
     setJobsdata(dispatch, jobs);
   };
 
+  const handleContactTrack = () => {
+    trackEvent(CATEGORY_JOBS, "CONTACT", isMobile ? "MOBILE" : "DESKTOP");
+  }
+
   const renderNoContent = () => (
     <div className="fs__jobs-no-content">
       <div className="fs__jobs-no-content-info">Oops, algo salió mal.</div>
-      <div className="fs__jobs-no-content-contact">Si el problema persiste, <a href={`mailto:${CONSTANTS.EMAIL}`}>avisanos</a>.</div>
+      <div className="fs__jobs-no-content-contact">Si el problema persiste, <a onClick={handleContactTrack} href={`mailto:${CONSTANTS.EMAIL}`}>avisanos</a>.</div>
       <NoContent height={isMobile ? "180" : "220"} width={isMobile ? "300" : "600"}/>
       <div className="fs__jobs-no-content-cta" onClick={handleRetry}>Volver a intentar.</div>
     </div>
@@ -65,7 +76,7 @@ const Jobs = () => {
         {!jobs.length ? renderFetching() : null}
         <div className="fs__jobs-footer">
           Si tu empresa busca desarrolladores Junior/Trainee, si sabes de alguna otra busqueda abierta de este estilo, si estas buscando algun puesto y queres dejar tu perfil para que
-          se puedan contactar con vos o si simplemente tenes alguna sugerencia, no dudes en contactarme a <a href={`mailto:${CONSTANTS.EMAIL}`}><strong>{CONSTANTS.EMAIL}</strong></a>
+          se puedan contactar con vos o si simplemente tenes alguna sugerencia, no dudes en contactarme a <a onClick={handleContactTrack} href={`mailto:${CONSTANTS.EMAIL}`}><strong>{CONSTANTS.EMAIL}</strong></a>
         </div>
       </div>
     ) : null
