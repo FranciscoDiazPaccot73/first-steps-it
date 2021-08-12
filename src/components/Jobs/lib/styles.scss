@@ -9,9 +9,16 @@
   }
 
   &__tab {
-    padding: 12px;
-    background-color: $main-color;
     border-radius: 30px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 10px;
+    padding: 1px 6px;
+    
+    &--orange {
+      background-color: $orange-10;
+      color: $orange;
+    }
   }
 
   &__jobs {
@@ -87,9 +94,8 @@
       align-items: center;
       background-color: $main-color;
       display: flex;
-      height: 170px;
+      min-height: 170px;
       margin: 10px 0;
-      padding: 16px;
       position: relative;
       overflow: hidden;
       text-decoration: none;
@@ -99,9 +105,10 @@
         display: flex;
         flex-direction: column;
         height: 100%;
-        left: 4px;
-        position: absolute;
-        width: 100%;
+        margin-left: 4px;
+        min-height: 170px;
+        padding-bottom: 4px;
+        width: calc(100% - 4px);
         
         &-head {
           align-items: center;
@@ -115,6 +122,17 @@
           position: absolute;
           right: 16px;
           top: 6px;
+          display: flex;
+        }
+
+        &-see-more {
+          bottom: 4px;
+          color: $orange;
+          cursor: pointer;
+          font-size: 14px;
+          padding: 6px 12px;
+          position: absolute;
+          right: 24px;
         }
       }
 
@@ -156,7 +174,7 @@
       }
 
       &-requirements {
-        margin: 16px 24px;
+        margin: 10px 24px 32px;
         text-decoration: none;
 
         &-title {
@@ -168,8 +186,85 @@
         &-content {
           color: $black-800;
           margin-left: 8px;
+
+          .list {
+            margin: 4px 6px 4px 0;
+
+            &::before {
+              content: "- ";
+            }
+          }
         }
       }
+    }
+  }
+}
+
+// SIDEBAR
+
+.sidebar {
+  &__content {
+    .fs__jobs-card-requirements {
+      margin: 0 0 24px 0;
+
+      &-title {
+        font-size: 18px;
+      }
+    }
+  }
+
+  &__header {
+    align-items: center;
+    display: flex;
+    margin-top: 12px;
+    width: 92%;
+
+    &-logo {
+      width: 35px;
+      max-height: 40px;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    span {
+      margin-left: 10px;
+    }
+  }
+
+  &__action {
+    background-color: $orange;
+    border: 1px solid $orange;
+    border-radius: 6px;
+    height: 38px;
+    width: 100%;
+
+    &-pdf {
+      color: $orange;
+      margin-top: 8px;
+      padding: 6px;
+      width: 100%;
+
+      a {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+
+        span {
+          margin-left: 6px;
+        }
+      }
+    }
+
+    .fs__jobs-card-cta {
+      align-items: center;
+      color: $main-color;
+      display: flex;
+      font-weight: 600;
+      height: 38px;
+      justify-content: center;
+      width: 100%;
     }
   }
 }
