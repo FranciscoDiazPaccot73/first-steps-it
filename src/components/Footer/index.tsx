@@ -2,15 +2,19 @@ import { useContext } from 'react';
 import { AiOutlineCopyright } from 'react-icons/ai';
 
 import { PageContext } from '../../context/index';
+import { CONFIG } from '../../utils/constants';
+import { trackEvent } from '../../utils/tracks';
 
 import './lib/styles.scss';
 
 const Footer = () => {
-  const { state: { showJobs } } = useContext(PageContext);
+  const { state: { showJobs, isMobile } } = useContext(PageContext);
+  const { FOOTER } = CONFIG;
   const anchorProps = {
     href: 'https://franciscodiazpaccot.com',
     target: '_blank',
     rel: 'noreferrer noopener',
+    onClick: () => trackEvent(FOOTER, "DEV_PAGE", isMobile ? "MOBILE" : "DESKTOP"),
   };
 
   return (

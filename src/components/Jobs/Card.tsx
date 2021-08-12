@@ -15,9 +15,12 @@ import {
 import Tab from './Tabs';
 
 import { getCorporateName, getCorporateLogo, getPdf } from '../../utils/jobs';
+import { CONFIG } from '../../utils/constants';
+import { trackEvent } from '../../utils/tracks';
 
 const Card = ({ job, className = "fs__jobs-card", isMobile }: CardType) => {
   const [ isOpen, setIsOpen ] = useState(false);
+  const { CATEGORY_JOBS } = CONFIG;
   const { link, title, corporate, location, requirement, allRequirement, benefits, description, pathId } = job;
   const Wrapper = isMobile ? 'a' : 'div';
   const anchorProps = {
@@ -58,13 +61,22 @@ const Card = ({ job, className = "fs__jobs-card", isMobile }: CardType) => {
 
   const handleClose = () => setIsOpen(false);
 
+  const handleTrack = (action: string, content: string) => {
+    trackEvent(CATEGORY_JOBS, action, `${content}__${isMobile ? "MOBILE" : "DESKTOP"}`);
+  }
+
   const handleSeeMore = () => {
+    handleTrack("SEE_MORE", `${corporate}__${title}`);
     setIsOpen(true);
   };
 
+  const handleCtaTrack = () => handleTrack("APPLY", `${corporate}__${title}`);
+
+  const handlePDFTrack = () => handleTrack("PDF", `${corporate}__${title}`);
+
   const renderPrimaryCta = () => (
     <div className="sidebar__action" onClick={handleClose}>
-      <a className={`${className}-cta`} {...anchorProps}>APLICAR</a>
+      <a onClick={handleCtaTrack} className={`${className}-cta`} {...anchorProps}>APLICAR</a>
     </div>
   );
 
@@ -73,7 +85,7 @@ const Card = ({ job, className = "fs__jobs-card", isMobile }: CardType) => {
       {renderPrimaryCta()}
       {getPdf(pathId) ? (
         <div className="sidebar__action-pdf">
-          <a {...anchorProps} href={getPdf(pathId)}><ImFilePdf /><span>Ver propuesta</span></a>
+          <a onClick={handlePDFTrack} {...anchorProps} href={getPdf(pathId)}><ImFilePdf /><span>Ver propuesta</span></a>
         </div>
       ) : null}
     </div>
@@ -83,7 +95,7 @@ const Card = ({ job, className = "fs__jobs-card", isMobile }: CardType) => {
     <>
       {getPdf(pathId) ? (
         <div className="sidebar__action-pdf">
-          <a {...anchorProps} href={getPdf(pathId)}><ImFilePdf /><span>Ver propuesta</span></a>
+          <a onClick={handlePDFTrack} {...anchorProps} href={getPdf(pathId)}><ImFilePdf /><span>Ver propuesta</span></a>
         </div>
       ) : null}
       {renderPrimaryCta()}

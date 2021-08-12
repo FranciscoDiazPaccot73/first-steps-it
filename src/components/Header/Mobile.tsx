@@ -6,11 +6,13 @@ import Programing from "../../Assets/programing";
 
 import logo from '../../Assets/logo.png';
 
-import { CONSTANTS } from '../../utils/constants';
+import { CONSTANTS, CONFIG } from '../../utils/constants';
+import { trackEvent } from '../../utils/tracks';
 
 const MobileHeader = ({ className = "fs__header", animate = false, isSticky, isMobile }: HeaderTypes) => {
   const [startTransition, setTransition] = useState(false);
   const [startSplitText, setSplit] = useState(false);
+  const { HEADER } = CONFIG;
 
   const titleClasses = classNames(`${className}-title`, {
     [`${className}-title--final`]: startTransition,
@@ -54,6 +56,7 @@ const MobileHeader = ({ className = "fs__header", animate = false, isSticky, isM
 
   const anchorProps = {
     href: `mailto:${CONSTANTS.EMAIL}`,
+    onClick: () => trackEvent(HEADER, "CONTACT", isMobile ? "MOBILE" : "DESKTOP"),
   };
 
   const renderHeaderTop = () => (
