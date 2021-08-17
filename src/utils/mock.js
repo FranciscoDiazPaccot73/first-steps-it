@@ -19,7 +19,7 @@ export default [
     description: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum ",
     link: "",
     location: "Paraná",
-    pathId: "",
+    pathId: "syloperPHP",
     requirement: "Requerimiento 1|Requerimiento 2",
     title: "Backend Developer"
   },
