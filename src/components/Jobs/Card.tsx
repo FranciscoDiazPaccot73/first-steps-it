@@ -24,7 +24,7 @@ const Card = ({ job, className = "fs__jobs-card", isMobile }: CardType) => {
   const { link, title, corporate, location, requirement, allRequirement, benefits, description, pathId } = job;
   const Wrapper = isMobile ? 'a' : 'div';
   const anchorProps = {
-    href: link,
+    href: link !== "" ? link : null,
     target: '_blank',
     rel: 'noreferrer noopener',
   };
