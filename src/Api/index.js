@@ -1,6 +1,8 @@
 import axios from "axios";
 import Papa from "papaparse";
 
+/* import mock from '../utils/mock'; */
+
 const INFORMATION = {
   sheet: "https://docs.google.com/spreadsheets/d/e/2PACX-1vStPiSkPaIg3WUmhOGVJN8U_uSywTOoiOcWC9XtAvyDclOU0gsiwtTpDCmm0Mxslh3MeYqnhFVDR7m_/pub?gid=0&single=true&output=csv"
 };
@@ -20,6 +22,7 @@ const shuffle = array => {
 
 export default {
   list: async () => {
+    /* return shuffle(mock); */
     return axios
       .get(INFORMATION.sheet, {
         responseType: "blob",
